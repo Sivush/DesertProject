@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://ckmqbw8xk6oyi"]
+
+[ext_resource type="Script" uid="uid://djoo8ykhimp1p" path="res://main.gd" id="1_wx3qt"]
+[ext_resource type="Script" uid="uid://p7e0e034dfhj" path="res://shelf.gd" id="2_p1gr0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wx3qt"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1gr0"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3owqy"]
+size = Vector3(10, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8upip"]
+size = Vector3(10, 1, 0.5)
+
+[node name="Node3D" type="Node3D" unique_id=1722285795]
+script = ExtResource("1_wx3qt")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1333913846]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 5, 8)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=850913009]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=955902174]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1935463391]
+mesh = SubResource("BoxMesh_wx3qt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1094040194]
+shape = SubResource("BoxShape3D_p1gr0")
+
+[node name="Wall" type="StaticBody3D" parent="." unique_id=1686998796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 4.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=892283168]
+mesh = SubResource("BoxMesh_3owqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=512124651]
+shape = SubResource("BoxShape3D_8upip")
+
+[node name="Wall2" type="StaticBody3D" parent="." unique_id=1224805243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -4.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2" unique_id=2012723448]
+mesh = SubResource("BoxMesh_3owqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2" unique_id=697815077]
+shape = SubResource("BoxShape3D_8upip")
+
+[node name="Wall3" type="StaticBody3D" parent="." unique_id=1980165749]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.75, 0.75, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3" unique_id=1356924559]
+mesh = SubResource("BoxMesh_3owqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3" unique_id=1147844273]
+shape = SubResource("BoxShape3D_8upip")
+
+[node name="Wall4" type="StaticBody3D" parent="." unique_id=920611863]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.75, 0.75, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4" unique_id=1003764913]
+mesh = SubResource("BoxMesh_3owqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4" unique_id=202002176]
+shape = SubResource("BoxShape3D_8upip")
+
+[node name="Shelf" type="Node3D" parent="." unique_id=64046600]
+script = ExtResource("2_p1gr0")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1917301529]
+
+[node name="ResultLabel" type="Label" parent="UI" unique_id=1324077389]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 56
+horizontal_alignment = 1
+vertical_alignment = 1
