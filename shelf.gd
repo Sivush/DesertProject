@@ -5,6 +5,10 @@ signal triple_removed
 
 const SLOT_COUNT = 7
 
+const SLOT_SPACING = 0.55
+const SLOT_Y = -1.7
+const SLOT_DEPTH = -5.0
+
 var items = []
 var busy = false
 
@@ -16,7 +20,7 @@ func has_item(item):
 
 func slot_position(index):
 	var camera = get_viewport().get_camera_3d()
-	var local_pos = Vector3((index - 3) * 0.55, -1.6, -3)
+	var local_pos = Vector3((index - 3) * SLOT_SPACING, SLOT_Y, SLOT_DEPTH)
 	return camera.global_transform * local_pos
 
 func add_item(item):

@@ -3,24 +3,48 @@
 [ext_resource type="Script" uid="uid://djoo8ykhimp1p" path="res://main.gd" id="1_wx3qt"]
 [ext_resource type="Script" uid="uid://p7e0e034dfhj" path="res://shelf.gd" id="2_p1gr0"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_board"]
+albedo_color = Color(0.45, 0.3, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_board"]
+material = SubResource("StandardMaterial3D_board")
+size = Vector3(4.2, 0.2, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1gr0"]
+albedo_color = Color(0.8509804, 0.7137255, 0.47843137, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_wx3qt"]
 size = Vector3(10, 0.5, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1gr0"]
 size = Vector3(10, 0.5, 10)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_walls"]
+albedo_color = Color(0.549, 0.353, 0.235, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_3owqy"]
+material = SubResource("StandardMaterial3D_walls")
 size = Vector3(10, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8upip"]
 size = Vector3(10, 1, 0.5)
 
+[sub_resource type="Environment" id="Environment_3owqy"]
+ambient_light_source = 2
+ambient_light_color = Color(0.6901961, 0.72156864, 0.8156863, 1)
+ambient_light_energy = 0.6
+
 [node name="Node3D" type="Node3D" unique_id=1722285795]
 script = ExtResource("1_wx3qt")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1333913846]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 5, 8)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 6.5, 10.6)
 current = true
+fov = 52.0
+
+[node name="ShelfBoard" type="MeshInstance3D" parent="Camera3D" unique_id=1973157805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -5)
+mesh = SubResource("BoxMesh_board")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=850913009]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
@@ -28,6 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=955902174]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1935463391]
+material_override = SubResource("StandardMaterial3D_p1gr0")
 mesh = SubResource("BoxMesh_wx3qt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1094040194]
@@ -37,6 +62,7 @@ shape = SubResource("BoxShape3D_p1gr0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 4.75)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=892283168]
+visible = false
 mesh = SubResource("BoxMesh_3owqy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=512124651]
@@ -84,3 +110,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 56
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=206982866]
+environment = SubResource("Environment_3owqy")
