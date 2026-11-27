@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b8osgkmy1rb2d"]
 
+[ext_resource type="Script" path="res://item.gd" id="1_item"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_p1gr0"]
 size = Vector3(1, 0.15, 1)
 
@@ -7,6 +9,7 @@ size = Vector3(1, 0.15, 1)
 size = Vector3(1, 0.15, 1)
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=550193378]
+script = ExtResource("1_item")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1619026150]
 mesh = SubResource("BoxMesh_p1gr0")

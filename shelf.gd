@@ -51,7 +51,7 @@ func add_item(item):
 	# Ищем место: если на полке уже есть плитки такого же типа, ставим новую рядом с ними
 	var insert_at = items.size()
 	for i in items.size():
-		if items[i].get_meta("type") == item.get_meta("type"):
+		if items[i].type == item.type:
 			insert_at = i + 1
 	items.insert(insert_at, item)
 
@@ -93,7 +93,7 @@ func remove_matches():
 	# Считаем, сколько плиток каждого типа лежит на полке
 	var counts = {}
 	for item in items:
-		var type = item.get_meta("type")
+		var type = item.type
 		counts[type] = counts.get(type, 0) + 1
 
 	# Если какого-то типа три или больше, удаляем три плитки этого типа
@@ -101,7 +101,7 @@ func remove_matches():
 		if counts[type] >= 3:
 			var removed = 0
 			for item in items.duplicate():
-				if item.get_meta("type") == type and removed < 3:
+				if item.type == type and removed < 3:
 					items.erase(item)
 					item.queue_free()
 					removed += 1
